@@ -1,0 +1,92 @@
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-bottom: 1px solid #E0E0E0;
+  background: white;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+}
+
+.logo-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #DD0031;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #666;
+  padding-bottom: 4px;
+}
+
+nav a.active {
+  color: #DD0031;
+  border-bottom: 2px solid #DD0031;
+}
+
+.actions {
+  display: flex;
+  gap: 5px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.cart-btn {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #DD0031;
+  color: white;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.store-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+@media (max-width: 480px) {
+  nav { display: none; }
+}

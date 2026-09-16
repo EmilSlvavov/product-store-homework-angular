@@ -1,0 +1,68 @@
+<div class="card" [class.out-of-stock]="!product.inStock">
+  @if (product.salePrice) {
+    <span class="discount-badge">-{{ discountPercent }}%</span>
+  }
+
+  <div class="thumbnail">
+    @switch (product.category) {
+      @case ('Electronics') { <span>💻</span> }
+      @case ('Audio') { <span>🎧</span> }
+      @case ('Home') { <span>🏠</span> }
+      @case ('Accessories') { <span>🎒</span> }
+      @default { <span>📦</span> }
+    }
+  </div>
+
+  <h3 class="name">{{ product.name }}</h3>
+  <p class="category">{{ product.category }}</p>
+
+  <app-star-rating [rating]="product.rating" [reviewCount]="product.reviewCount" />
+
+  <p class="description">{{ product.description | truncate:60 }}</p>
+
+  <div class="price">
+    @if (product.salePrice) {
+      <s>${{ product.price }}</s>
+      <span>${{ product.salePrice }}</span>
+    } @else {
+      <span>${{ product.price }}</span>
+    }
+  </div>
+
+  @if (product.inStock) {
+    <span class="badge in-stock">In stock</span>
+  } @else {
+    <span class="badge no-stock">Out of stock</span>
+  }
+
+  <p class="added-date">Added {{ product.dateAdded | relativeTime }}</p>
+
+  @if (product.inStock) {
+    <div class="quantity">
+      <label class="qty-label" for="qty-{{ product.id }}">Qty</label>
+      <input
+        class="qty-input"
+        id="qty-{{ product.id }}"
+        type="number"
+        min="1"
+        max="10"
+        [(ngModel)]="quantity"
+        (ngModelChange)="onQuantityChange($event)" />
+    </div>
+
+    <button
+      type="button"
+      class="add-btn"
+      [class.added]="isInCart"
+      [disabled]="isInCart"
+      (click)="onAddToCart()">
+      @if (isInCart) {
+        Added ✓
+      } @else {
+        Add to cart
+      }
+    </button>
+  } @else {
+    <button type="button" class="notify-btn">Notify me</button>
+  }
+</div>

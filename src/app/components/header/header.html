@@ -1,0 +1,27 @@
+<header>
+  <div class="logo">
+    <div class="logo-mark">A</div>
+    <span class="store-name">ProductStore</span>
+  </div>
+
+  <nav>
+    <a href="#" class="active">Home</a>
+    <a href="#">Products</a>
+    <a href="#">About</a>
+  </nav>
+
+  <div class="actions">
+    <button (click)="toggleTheme()">
+      @if (isDarkMode) {
+        <span>🌙</span>
+      } @else {
+        <span>☀️</span>
+      }
+    </button>
+
+    <button class="cart-btn">
+      🛒
+      <span class="badge">{{ cartCount }}</span>
+    </button>
+  </div>
+</header>

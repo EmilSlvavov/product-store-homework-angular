@@ -1,0 +1,29 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stars {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.stars.interactive .star {
+  cursor: pointer;
+}
+
+.star {
+  color: #CCCCCC;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.star.filled {
+  color: #FFB400;
+}
+
+.rating-meta {
+  font-size: 12px;
+  color: #666666;
+}

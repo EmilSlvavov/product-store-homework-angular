@@ -1,0 +1,62 @@
+.hero {
+  background: linear-gradient(135deg, #1A2138 0%, #2D2D5A 100%);
+  text-align: center;
+  padding: 72px 20px;
+  color: #E0E0E0;
+}
+
+.announcement {
+  background: #DD0031;
+  color: white;
+  font-size: 15px;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+}
+
+.btn-primary {
+  background: #DD0031;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #B30028;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid white;
+}
+
+.btn-secondary:hover {
+  background: #505E8C;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero h1 {
+  animation: fadeSlideUp 3s ease-out both;
+}
