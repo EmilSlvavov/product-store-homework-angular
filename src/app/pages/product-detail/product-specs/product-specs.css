@@ -1,0 +1,19 @@
+.specs-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  max-width: 600px;
+}
+
+.spec-label,
+.spec-value {
+  padding: 12px 0;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.spec-label {
+  color: #666666;
+}
+
+.spec-value {
+  font-weight: bold;
+}

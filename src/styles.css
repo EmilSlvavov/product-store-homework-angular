@@ -18,8 +18,41 @@ body.dark-mode footer {
   border-color: #3E4462;
 }
 
-body.dark-mode .thumbnail {
+body.dark-mode .thumbnail,
+body.dark-mode .main-image,
+body.dark-mode .thumb,
+body.dark-mode .related-image {
   background: #2A2D45;
+}
+
+body.dark-mode .tabs,
+body.dark-mode .spec-label,
+body.dark-mode .spec-value {
+  border-color: #3E4462;
+}
+
+body.dark-mode .qty-stepper,
+body.dark-mode .wishlist-btn {
+  border-color: #3E4462;
+}
+
+body.dark-mode .qty-btn:disabled {
+  color: #555A7A;
+}
+
+body.dark-mode .add-to-cart.added {
+  background: #1B3A2A;
+  color: #7BD8A0;
+}
+
+body.dark-mode .stock-in {
+  background: #1B3A2A;
+  color: #7BD8A0;
+}
+
+body.dark-mode .stock-out {
+  background: #3E1F22;
+  color: #F0908F;
 }
 
 body.dark-mode .category,
@@ -31,17 +64,27 @@ body.dark-mode .clear-search,
 body.dark-mode .description,
 body.dark-mode .added-date,
 body.dark-mode .member-note,
-body.dark-mode .qty-label {
+body.dark-mode .qty-label,
+body.dark-mode .crumb-link,
+body.dark-mode .crumb-sep,
+body.dark-mode .category-count,
+body.dark-mode .tab,
+body.dark-mode .spec-label,
+body.dark-mode .reviews-note,
+body.dark-mode .product-description,
+body.dark-mode .shipping {
   color: #AAAAAA;
 }
 
-body.dark-mode .qty-input {
+body.dark-mode .qty-input,
+body.dark-mode .category-card {
   background: #212337;
   border-color: #3E4462;
   color: #E0E0E0;
 }
 
-body.dark-mode .search-input {
+body.dark-mode .search-input,
+body.dark-mode .related-card {
   background: #212337;
   border-color: #3E4462;
 }

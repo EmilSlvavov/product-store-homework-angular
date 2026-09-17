@@ -5,6 +5,7 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
 import { CurrencyPipe } from '@angular/common';
 import { DiscountPipe } from '../../pipes/discount-pipe';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   imports: [ProductCard, FormsModule, CurrencyPipe, DiscountPipe],
@@ -15,10 +16,17 @@ import { DiscountPipe } from '../../pipes/discount-pipe';
 export class ProductListPage {
   private productService = inject(ProductService);
 
+  private route = inject(ActivatedRoute);
+
   isLoading = signal(true);
 
   constructor() {
     setTimeout(() => this.isLoading.set(false), 1000);
+    const category = this.route.snapshot.queryParamMap.get('category');
+
+    if (category && this.productService.getCategories().includes(category)) {
+      this.selectedCategory = category;
+    }
   }
 
   get skeletonCards(): number[] {

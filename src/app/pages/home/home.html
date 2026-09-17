@@ -1,1 +1,25 @@
 <app-hero-banner announcement="NEW COLLECTION 2026" (ctaClicked)="onHeroCta($event)"/>
+
+<section class="home-section">
+  <h2>Featured products</h2>
+
+  <div class="featured-grid">
+    @for (product of featured; track product.id) {
+      <app-product-card [product]="product" />
+    }
+  </div>
+</section>
+
+<section class="home-section">
+  <h2>Shop by category</h2>
+
+  <div class="category-grid">
+    @for (cat of categories; track cat.name) {
+      <a class="category-card" routerLink="/products" [queryParams]="{ category: cat.name }">
+        <span class="category-name">{{ cat.name }}</span>
+        <span class="category-count">{{ cat.count }} products</span>
+        <span class="category-cta">Shop now →</span>
+      </a>
+    }
+  </div>
+</section>

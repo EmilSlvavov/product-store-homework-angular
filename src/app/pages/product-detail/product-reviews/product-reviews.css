@@ -1,0 +1,10 @@
+.reviews-count {
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.reviews-note {
+  margin: 0;
+  color: #666666;
+}

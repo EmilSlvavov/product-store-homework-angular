@@ -1,1 +1,117 @@
-<p>product-detail works!</p>
+@if (product(); as p) {
+  <div class="detail-page">
+    <div class="detail-top">
+
+      <div class="gallery">
+        <div class="main-image">{{ views[selectedView()] }} view</div>
+
+        <div class="thumbnails">
+          @for (view of views; track view) {
+            <button
+              type="button"
+              class="thumb"
+              [class.selected]="selectedView() === $index"
+              (click)="selectView($index)">
+              {{ view }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <div class="info">
+        <span class="category-badge">{{ p.category }}</span>
+        <h1 class="product-title">{{ p.name }}</h1>
+
+        <app-star-rating [rating]="p.rating" [reviewCount]="p.reviewCount" />
+
+        <p class="product-description">{{ p.description }}</p>
+
+        <div class="product-price">
+          @if (p.salePrice) {
+            <s>${{ p.price }}</s>
+            <span>${{ p.salePrice }}</span>
+          } @else {
+            <span>${{ p.price }}</span>
+          }
+        </div>
+
+        @if (p.inStock) {
+          <span class="stock-in">In stock</span>
+        } @else {
+          <span class="stock-out">Out of stock</span>
+        }
+
+        <p class="shipping">Free shipping on orders over $50 · Ships in 1–2 business days</p>
+
+        <div class="actions-row">
+          @if (p.inStock) {
+            <div class="qty-stepper">
+              <button
+                type="button"
+                class="qty-btn"
+                aria-label="Decrease quantity"
+                [disabled]="quantity() <= 1"
+                (click)="decrease()">−</button>
+
+              <span class="qty-value">{{ quantity() }}</span>
+
+              <button
+                type="button"
+                class="qty-btn"
+                aria-label="Increase quantity"
+                [disabled]="quantity() >= 10"
+                (click)="increase()">+</button>
+            </div>
+
+            <button
+              type="button"
+              class="add-to-cart"
+              [class.added]="cart.isInCart(p.id)"
+              [disabled]="cart.isInCart(p.id)"
+              (click)="addToCart(p)">
+              @if (cart.isInCart(p.id)) {
+                Added ✓
+              } @else {
+                Add to cart
+              }
+            </button>
+          } @else {
+            <button type="button" class="notify-btn">Notify me</button>
+          }
+
+          <button type="button" class="wishlist-btn" aria-label="Add to wishlist">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <a class="tab" routerLink="./specs" routerLinkActive="active">Specifications</a>
+      <a class="tab" routerLink="./reviews" routerLinkActive="active">Reviews</a>
+    </div>
+
+    <div class="tab-content">
+      <router-outlet />
+    </div>
+
+    <section class="related">
+      <h2 class="related-title">Related products</h2>
+
+      <div class="related-grid">
+        @for (item of related(); track item.id) {
+          <a class="related-card" [routerLink]="['/products', item.id]">
+            <div class="related-image">{{ item.category }}</div>
+            <span class="related-name">{{ item.name }}</span>
+            <span class="related-price">${{ item.salePrice ?? item.price }}</span>
+          </a>
+        }
+      </div>
+    </section>
+
+  </div>
+} @else {
+  <div class="not-found">
+    <h2>Product not found</h2>
+    <p>We couldn't find a product with that ID.</p>
+    <a routerLink="/products" class="back-btn">Back to products</a>
+  </div>
+}
