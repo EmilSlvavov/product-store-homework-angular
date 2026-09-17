@@ -1,9 +1,10 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../../models/product';
 import { StarRating } from '../star-rating/star-rating';
 import { TruncatePipe } from '../../pipes/truncate-pipe';
 import { RelativeTimePipe } from '../../pipes/relative-time-pipe';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   imports: [FormsModule, StarRating, TruncatePipe, RelativeTimePipe],
@@ -13,9 +14,8 @@ import { RelativeTimePipe } from '../../pipes/relative-time-pipe';
 })
 export class ProductCard {
   @Input() product!: Product;
-  @Input() isInCart: boolean = false;
 
-  @Output() addedToCart = new EventEmitter<Product>();
+  protected cart = inject(CartService);
 
   quantity: number = 1;
 
@@ -39,6 +39,6 @@ export class ProductCard {
   }
 
   onAddToCart(): void {
-    this.addedToCart.emit(this.product);
+    this.cart.addItem(this.product, this.quantity);
   }
 }

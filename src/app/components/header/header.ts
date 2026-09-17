@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   imports: [],
@@ -8,15 +9,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class Header implements OnInit {
 
+  protected cart = inject(CartService);
+
 
   ngOnInit(): void {
-    const saved = localStorage.getItem("theme")
-    if (saved === "dark") {
-      this.isDarkMode = true
-      document.body.classList.add("dark-mode")
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      this.isDarkMode = true;
+      document.body.classList.add('dark-mode');
     }
   }
-  @Input() cartCount: number = 0;
 
   isDarkMode: boolean = false;
 

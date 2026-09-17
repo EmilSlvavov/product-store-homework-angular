@@ -9,4 +9,6 @@ export interface Product {
   rating: number;
   reviewCount: number;
   dateAdded: Date;
+  specs: Record<string, string>;
+  relatedIds: number[];
 }

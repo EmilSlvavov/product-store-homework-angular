@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Header } from './components/header/header';
 import { HeroBanner } from './components/hero-banner/hero-banner';
 import { ProductCard } from './components/product-card/product-card';
@@ -7,6 +7,7 @@ import { Footer } from './components/footer/footer';
 import { DiscountPipe } from './pipes/discount-pipe';
 import { CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ProductService } from './services/product.service';
 
 @Component({
   imports: [Header, HeroBanner, ProductCard, Footer, DiscountPipe, CurrencyPipe, FormsModule],
@@ -16,6 +17,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class App {
   protected readonly title = signal('product-store');
+
+  private productService = inject(ProductService)
 
   isLoading = signal(true);
 
@@ -35,7 +38,7 @@ export class App {
   inStockOnly: boolean = false;
   sortBy: string = '';
 
-  pageSize: number = 4;
+  pageSize: number = 6;
   currentPage: number = 1;
 
   goToPage(page: number): void {
@@ -144,19 +147,6 @@ export class App {
     console.log('Hero CTA clicked:', label);
   }
 
-  onAddToCartCta(product: Product): void {
-    if (!this.cartProductIds.includes(product.id)) {
-      this.cartProductIds.push(product.id);
-      console.log(product.name);
-    }
-  }
-
-  cartProductIds: number[] = [];
-
-  get totalCartItems(): number {
-    return this.cartProductIds.length;
-  }
-
   get categoryCounts(): { category: string; count: number }[] {
     const counts: Record<string, number> = {};
 
@@ -167,96 +157,5 @@ export class App {
     return Object.entries(counts).map(([category, count]) => ({ category, count }));
   }
 
-  allProducts: Product[] = [
-    {
-      id: 1,
-      name: 'Laptop Pro 14',
-      category: 'Electronics',
-      price: 1299,
-      inStock: true,
-      description: 'Thin-and-light 14" laptop with an all-day battery.',
-      rating: 5,
-      reviewCount: 128,
-      dateAdded: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
-    },
-    {
-      id: 2,
-      name: '4K Monitor 27"',
-      category: 'Electronics',
-      price: 449,
-      salePrice: 379,
-      inStock: true,
-      description: 'Colour-accurate 27-inch display for work and play.',
-      rating: 4,
-      reviewCount: 64,
-      dateAdded: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
-    },
-    {
-      id: 3,
-      name: 'Mechanical Keyboard',
-      category: 'Electronics',
-      price: 129,
-      inStock: false,
-      description: 'Hot-swappable switches with a compact 75% layout.',
-      rating: 4,
-      reviewCount: 41,
-      dateAdded: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000),
-    },
-    {
-      id: 4,
-      name: 'Noise-Cancelling Headphones',
-      category: 'Audio',
-      price: 299,
-      salePrice: 229,
-      inStock: true,
-      description: 'Over-ear headphones with 30 hours of playback.',
-      rating: 5,
-      reviewCount: 210,
-      dateAdded: new Date(Date.now() - 6 * 60 * 60 * 1000),
-    },
-    {
-      id: 5,
-      name: 'Bluetooth Speaker',
-      category: 'Audio',
-      price: 89,
-      inStock: true,
-      description: 'Pocket-sized speaker that is splash-proof and loud.',
-      rating: 4,
-      reviewCount: 87,
-      dateAdded: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000),
-    },
-    {
-      id: 6,
-      name: 'Espresso Machine',
-      category: 'Home',
-      price: 549,
-      inStock: true,
-      description: 'Dual-boiler machine with a built-in grinder.',
-      rating: 4,
-      reviewCount: 33,
-      dateAdded: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
-    },
-    {
-      id: 7,
-      name: 'Robot Vacuum',
-      category: 'Home',
-      price: 399,
-      inStock: false,
-      description: 'Maps your floors and empties itself for 60 days.',
-      rating: 3,
-      reviewCount: 19,
-      dateAdded: new Date(Date.now() - 20 * 24 * 60 * 60 * 1000),
-    },
-    {
-      id: 8,
-      name: 'Leather Laptop Sleeve',
-      category: 'Accessories',
-      price: 59,
-      inStock: true,
-      description: 'Full-grain leather sleeve with a felt lining.',
-      rating: 4,
-      reviewCount: 52,
-      dateAdded: new Date(Date.now() - 30 * 60 * 1000),
-    },
-  ];
+  allProducts: Product[] = this.productService.getAll()
 }

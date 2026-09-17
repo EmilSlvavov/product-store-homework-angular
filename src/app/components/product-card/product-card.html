@@ -53,10 +53,10 @@
     <button
       type="button"
       class="add-btn"
-      [class.added]="isInCart"
-      [disabled]="isInCart"
+      [class.added]="cart.isInCart(product.id)"
+      [disabled]="cart.isInCart(product.id)"
       (click)="onAddToCart()">
-      @if (isInCart) {
+      @if (cart.isInCart(product.id)) {
         Added ✓
       } @else {
         Add to cart

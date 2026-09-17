@@ -1,4 +1,4 @@
-<app-header [cartCount]="totalCartItems"/>
+<app-header/>
 
 <app-hero-banner announcement="NEW COLLECTION 2026" (ctaClicked)="onHeroCta($event)"/>
 
@@ -82,9 +82,7 @@
       <div class="product-grid">
         @for (product of paginatedProducts; track product.id) {
           <app-product-card
-            [product]="product"
-            [isInCart]="cartProductIds.includes(product.id)"
-            (addedToCart)="onAddToCartCta($event)" />
+            [product]="product"/>
         }
       </div>
 
