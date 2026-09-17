@@ -13,6 +13,8 @@ header {
   align-items: center;
   gap: 5px;
   flex: 1;
+  text-decoration: none;
+  color: inherit;
 }
 
 .logo-mark {
@@ -59,6 +61,8 @@ button {
 
 .cart-btn {
   position: relative;
+  text-decoration: none;
+  font-size: 18px;
 }
 
 .badge {

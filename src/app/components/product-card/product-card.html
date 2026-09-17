@@ -13,7 +13,9 @@
     }
   </div>
 
-  <h3 class="name">{{ product.name }}</h3>
+  <h3 class="name">
+    <a [routerLink]="['/products', product.id]">{{ product.name }}</a>
+  </h3>
   <p class="category">{{ product.category }}</p>
 
   <app-star-rating [rating]="product.rating" [reviewCount]="product.reviewCount" />

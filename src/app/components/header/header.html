@@ -1,13 +1,13 @@
 <header>
-  <div class="logo">
+  <a routerLink="/" class="logo">
     <div class="logo-mark">A</div>
     <span class="store-name">ProductStore</span>
-  </div>
+  </a>
 
   <nav>
-    <a href="#" class="active">Home</a>
-    <a href="#">Products</a>
-    <a href="#">About</a>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/products" routerLinkActive="active">Products</a>
+    <a routerLink="/about" routerLinkActive="active">About</a>
   </nav>
 
   <div class="actions">
@@ -19,9 +19,9 @@
       }
     </button>
 
-    <button class="cart-btn">
+    <a routerLink="/cart" class="cart-btn">
       🛒
       <span class="badge">{{ cart.totalItems() }}</span>
-    </button>
+    </a>
   </div>
 </header>

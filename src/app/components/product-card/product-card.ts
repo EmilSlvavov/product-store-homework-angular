@@ -5,9 +5,10 @@ import { StarRating } from '../star-rating/star-rating';
 import { TruncatePipe } from '../../pipes/truncate-pipe';
 import { RelativeTimePipe } from '../../pipes/relative-time-pipe';
 import { CartService } from '../../services/cart.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [FormsModule, StarRating, TruncatePipe, RelativeTimePipe],
+  imports: [FormsModule, StarRating, TruncatePipe, RelativeTimePipe, RouterLink],
   selector: 'app-product-card',
   styleUrl: './product-card.css',
   templateUrl: './product-card.html',

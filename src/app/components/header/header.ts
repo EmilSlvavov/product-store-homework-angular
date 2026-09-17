@@ -1,16 +1,15 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CartService } from '../../services/cart.service';
+import { RouterLinkActive, RouterLink } from '@angular/router';
 
 @Component({
-  imports: [],
+  imports: [RouterLinkActive, RouterLink],
   selector: 'app-header',
   styleUrl: './header.css',
   templateUrl: './header.html',
 })
 export class Header implements OnInit {
-
   protected cart = inject(CartService);
-
 
   ngOnInit(): void {
     const saved = localStorage.getItem('theme');
