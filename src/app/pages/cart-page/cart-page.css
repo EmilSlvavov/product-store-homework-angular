@@ -1,0 +1,167 @@
+.cart-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.cart-title {
+  margin: 0 0 20px;
+  font-size: 28px;
+}
+
+.cart-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 80px;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.cart-head {
+  padding-top: 0;
+  color: #666666;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.item-name {
+  color: inherit;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.item-name:hover {
+  text-decoration: underline;
+}
+
+.item-total {
+  font-weight: bold;
+}
+
+.qty-stepper {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 34px;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  justify-self: start;
+}
+
+.qty-btn {
+  width: 30px;
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.qty-btn:disabled {
+  color: #CCCCCC;
+  cursor: default;
+}
+
+.qty-value {
+  min-width: 28px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.remove-btn {
+  justify-self: end;
+  border: none;
+  background: none;
+  color: #DD0031;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  text-decoration: underline;
+}
+
+.cart-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 20px 0;
+}
+
+.cart-total {
+  color: #DD0031;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.continue-link {
+  color: #666666;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.continue-link:hover {
+  color: #DD0031;
+}
+
+.clear-btn {
+  padding: 8px 16px;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.cart-empty {
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.cart-empty-title {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cart-empty-hint {
+  margin: 0 0 16px;
+  color: #666666;
+}
+
+.browse-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: #DD0031;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .cart-head {
+    display: none;
+  }
+
+  .cart-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .item-name {
+    grid-column: 1 / -1;
+  }
+}

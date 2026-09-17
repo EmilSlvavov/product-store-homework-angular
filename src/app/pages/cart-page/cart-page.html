@@ -1,1 +1,59 @@
-<p>cart-page works!</p>
+<section class="cart-page">
+  <h1 class="cart-title">Your cart</h1>
+
+  @if (cart.cartItems().length === 0) {
+    <div class="cart-empty">
+      <p class="cart-empty-title">Your cart is empty</p>
+      <p class="cart-empty-hint">Find something you like and it'll show up here.</p>
+      <a routerLink="/products" class="browse-btn">Browse products</a>
+    </div>
+  } @else {
+    <div class="cart-row cart-head">
+      <span>Product</span>
+      <span>Price</span>
+      <span>Quantity</span>
+      <span>Total</span>
+      <span></span>
+    </div>
+
+    @for (item of cart.cartItems(); track item.product.id) {
+      <div class="cart-row">
+        <a class="item-name" [routerLink]="['/products', item.product.id]">{{ item.product.name }}</a>
+
+        <span>{{ unitPrice(item) | currency:'USD' }}</span>
+
+        <div class="qty-stepper">
+          <button
+            type="button"
+            class="qty-btn"
+            aria-label="Decrease quantity"
+            [disabled]="item.quantity <= 1"
+            (click)="decrease(item)">−</button>
+
+          <span class="qty-value">{{ item.quantity }}</span>
+
+          <button
+            type="button"
+            class="qty-btn"
+            aria-label="Increase quantity"
+            [disabled]="item.quantity >= 10"
+            (click)="increase(item)">+</button>
+        </div>
+
+        <span class="item-total">{{ lineTotal(item) | currency:'USD' }}</span>
+
+        <button type="button" class="remove-btn" (click)="remove(item)">Remove</button>
+      </div>
+    }
+
+    <div class="cart-summary">
+      <span>Total ({{ cart.totalItems() }} items)</span>
+      <span class="cart-total">{{ cart.totalPrice() | currency:'USD' }}</span>
+    </div>
+
+    <div class="cart-actions">
+      <a routerLink="/products" class="continue-link">← Continue shopping</a>
+      <button type="button" class="clear-btn" (click)="cart.clearCart()">Clear cart</button>
+    </div>
+  }
+</section>

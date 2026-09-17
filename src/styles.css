@@ -55,6 +55,11 @@ body.dark-mode .stock-out {
   color: #F0908F;
 }
 
+body.dark-mode .cart-row,
+body.dark-mode .clear-btn {
+  border-color: #3E4462;
+}
+
 body.dark-mode .category,
 body.dark-mode .footer-links a,
 body.dark-mode nav a,
@@ -72,7 +77,10 @@ body.dark-mode .tab,
 body.dark-mode .spec-label,
 body.dark-mode .reviews-note,
 body.dark-mode .product-description,
-body.dark-mode .shipping {
+body.dark-mode .shipping,
+body.dark-mode .cart-head,
+body.dark-mode .cart-empty-hint,
+body.dark-mode .continue-link {
   color: #AAAAAA;
 }
 
