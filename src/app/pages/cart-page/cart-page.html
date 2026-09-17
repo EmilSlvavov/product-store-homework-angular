@@ -53,7 +53,11 @@
 
     <div class="cart-actions">
       <a routerLink="/products" class="continue-link">← Continue shopping</a>
-      <button type="button" class="clear-btn" (click)="cart.clearCart()">Clear cart</button>
+
+      <div class="cart-actions-right">
+        <button type="button" class="clear-btn" (click)="cart.clearCart()">Clear cart</button>
+        <a routerLink="/checkout" class="checkout-btn">Proceed to checkout</a>
+      </div>
     </div>
   }
 </section>

@@ -1,0 +1,12 @@
+<section class="checkout-page">
+  <h1 class="checkout-title">Checkout</h1>
+
+  <p>
+    You're checking out {{ cart.totalItems() }} items for
+    <strong>{{ cart.totalPrice() | currency:'USD' }}</strong>.
+  </p>
+
+  <p class="checkout-note">Payment and delivery details are coming later.</p>
+
+  <a routerLink="/cart" class="back-to-cart">← Back to cart</a>
+</section>

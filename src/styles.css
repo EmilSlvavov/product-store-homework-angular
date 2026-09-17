@@ -80,7 +80,10 @@ body.dark-mode .product-description,
 body.dark-mode .shipping,
 body.dark-mode .cart-head,
 body.dark-mode .cart-empty-hint,
-body.dark-mode .continue-link {
+body.dark-mode .continue-link,
+body.dark-mode .checkout-note,
+body.dark-mode .back-to-cart,
+body.dark-mode .error-message {
   color: #AAAAAA;
 }
 

@@ -165,3 +165,22 @@
     grid-column: 1 / -1;
   }
 }
+
+.cart-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.checkout-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: #DD0031;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.checkout-btn:hover {
+  background: #B30028;
+}
